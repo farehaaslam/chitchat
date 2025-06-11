@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   email: {
-    type: "String",
-    required: "true",
-    unique: "true",
+    type: String,
+    required: true,
+    unique: true,
   },
   name: {
-    type: "String",
-    required: "true",
+    type: String,
+    required: true,
   },
   password: {
     type: String,
@@ -15,12 +15,21 @@ const userSchema = new mongoose.Schema({
     minlength: 6,
   },
   profilepic:{
-    type: "String",
+    type: String,
     default:"",
-
+  },
+  isOnline:{
+    type:Boolean,
+    default:false,
+  },
+  displayName:{
+    type:String,
+    required:true,
   }
+
 },{
     timestamps:true,
 });
 const User = mongoose.model('User', userSchema)
-module.exports = User
+export default User;
+
