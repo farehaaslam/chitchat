@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
   displayName:{
     type:String,
     required:true,
+  },
+  about:{
+    type:String,
+    default:""
   }
 
 },{
