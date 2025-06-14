@@ -5,9 +5,10 @@ import Home from './pages/Home'
 import Setting from './pages/Setting'
 import SignIn from './pages/SignIn'
 import Signup from './pages/Signup'
-import Profile from './pages/Profile'
+import Profile from './pages/Profile.jsx'
 import { userAuthStore } from './store/userAuthStore.js'
 import {Loader} from "lucide-react"
+import { Toaster } from 'react-hot-toast'
 const App = () => {
   const{authUser,checkAuth,isCheckingAuth}=userAuthStore()
   useEffect(() => {
@@ -28,6 +29,7 @@ const App = () => {
     <Route path='/signup' element={!authUser?<Signup/>:<Navigate to="/"/>}/>
     <Route path='/profile' element={authUser ? <Profile/>: <Navigate to="/signin"/>}/>
   </Routes>
+  <Toaster/>
 
     
   </>
