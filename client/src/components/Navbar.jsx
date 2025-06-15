@@ -1,17 +1,17 @@
 import React from 'react'
-import {userAuthStore} from '../store/userAuthStore.js'
+import {userAuthStore} from '../store/useAuthStore.js'
 import { Link } from 'react-router-dom'
 import {Settings} from 'lucide-react'
 
 const Navbar = () => {
   const {authUser,logout}=userAuthStore()
   return (
-    <div>
+    <div >
    { authUser?
    <div>
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar  shadow-sm bg-primary">
   <div className="flex-1">
-    <a className="btn btn-ghost text-[25px] text-amber-400 font-extrabold">chitChat</a>
+    <a className="btn btn-ghost text-[25px]  font-extrabold">chitChat</a>
   </div>
   <div className="flex gap-2">
     {/* <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" /> */}
@@ -42,7 +42,7 @@ const Navbar = () => {
    :
    <div className="navbar bg-base-100 shadow-sm">
   <div className="flex-1">
-    <a className="btn btn-ghost text-[25px] text-amber-400 font-extrabold">chitChat</a>
+    <a className="btn btn-ghost text-[25px]  font-extrabold">chitChat</a>
   </div>
   <div className="flex-none">
     <Link to='/setting' className="btn btn-square btn-ghost" >

@@ -6,11 +6,13 @@ import Setting from './pages/Setting'
 import SignIn from './pages/SignIn'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile.jsx'
-import { userAuthStore } from './store/userAuthStore.js'
+import { userAuthStore } from './store/useAuthStore.js'
 import {Loader} from "lucide-react"
 import { Toaster } from 'react-hot-toast'
+import { useThemeStore } from './store/useThemeStore.js'
 const App = () => {
   const{authUser,checkAuth,isCheckingAuth}=userAuthStore()
+  const{theme}=useThemeStore()
   useEffect(() => {
     checkAuth()
   }, [checkAuth])
@@ -20,7 +22,7 @@ const App = () => {
   }
   
   return (
-  <>
+  <div data-theme={theme} className="min-h-screen bg-base-100">
   <Navbar/>
   <Routes>
     <Route path='/' element={authUser ?<Home/>:<Navigate to="/signin"/>}/>
@@ -30,9 +32,7 @@ const App = () => {
     <Route path='/profile' element={authUser ? <Profile/>: <Navigate to="/signin"/>}/>
   </Routes>
   <Toaster/>
-
-    
-  </>
+  </div>
   
   )
 }

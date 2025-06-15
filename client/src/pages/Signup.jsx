@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { userAuthStore } from '../store/userAuthStore.js'
+import { userAuthStore } from '../store/useAuthStore.js'
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
 import { Link } from "react-router-dom";   
 import  GridMotion from "../lib/Grid.jsx"
