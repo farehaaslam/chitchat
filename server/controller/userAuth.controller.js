@@ -74,13 +74,13 @@ export const userLogin=async (req,res) => {
     try {
         const user=await User.findOne({email})
         if(!user){
-            return res.status(400).res.json({
+            return res.status(400).json({
                 message:"already a user , sign in"
             })
         }
        const isPasswordCorrect= await bcrypt.compare(password,user.password)
        if(!isPasswordCorrect){
-         return res.status(400).res.json({
+         return res.status(400).json({
                 message:"incorrect password"
             })
        }
