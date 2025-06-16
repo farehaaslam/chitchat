@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
+   "engines": {
+    "node": "20.16.0"
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "chatapp": "file:..",
