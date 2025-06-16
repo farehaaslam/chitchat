@@ -136,7 +136,7 @@ const SignIn = () => {
                    Loading...
                </>
               ) : (
-                 "Create Account"
+                 "Sign in"
              )}
            </button>
            </form>
@@ -144,8 +144,8 @@ const SignIn = () => {
            <div className="text-center">
              <p className="text-base-content/60">
                Don't have an account ?{" "}
-               <Link to="/signin" className="link link-primary">
-                 Sign in
+               <Link to="/signup" className="link link-primary">
+                 Sign up
                </Link>
              </p>
            </div>
@@ -153,7 +153,7 @@ const SignIn = () => {
       </div>
 
        {/* right side */}
-<div  className="" >
+<div  className="hidden  lg:block" >
     <div className="h-10/12  my-[2px]">
         <GridMotion items={items}  />
 

@@ -5,15 +5,26 @@ import ChatInput from "./ChatInput";
 import MessageSkeleton from "./skeleton/MessageSkeleton";
 import { userAuthStore } from "../store/useAuthStore";
 import { formatMessageTime } from "../lib/utils";
+import { useRef } from "react";
 const ChatContainer = () => {
-  const { messages, isMessageLoading, getMessages, selectedUser } =
+  const { messages, isMessageLoading, getMessages, selectedUser,subscribeToMessage,unsubscribeFromMessages } =
     useChatStore();
-  console.log(selectedUser);
+const messageEndRef=useRef(null)
+  //console.log(selectedUser);
   const { authUser } = userAuthStore();
   useEffect(() => {
     getMessages(selectedUser._id);
+    subscribeToMessage()
+    return ()=>unsubscribeFromMessages()
   }, [selectedUser._id]);
-console.log(messages);
+// console.log(messages);
+useEffect(() => {
+  if (messageEndRef.current) {
+    messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+}, [messages]);
+
+
   if (isMessageLoading)
     return (
       <div className="flex flex-1 flex-col overflow-auto">
@@ -31,6 +42,7 @@ console.log(messages);
   <div
     key={message._id}
     className={`chat ${message.senderId === authUser._id ? "chat-end" : "chat-start"}`}
+    
   >
     <div className="chat-image avatar">
       <div className="w-10 rounded-full">
@@ -41,7 +53,9 @@ console.log(messages);
               ? authUser.profilepic || "/avatar.png"
               : selectedUser?.profilepic || "/avatar.png"
           }
+          
         />
+        <div ref={messageEndRef}></div>
       </div>
     </div>
     <div className="chat-header mb-1">

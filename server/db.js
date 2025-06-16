@@ -1,5 +1,7 @@
 import mongoose from "mongoose"
 import express from "express"
+import { server } from "./lib/socket.js"
+
 const connectToMongoDB = async (url) => {
     try {
       await mongoose.connect(url)
@@ -12,7 +14,7 @@ const connectToMongoDB = async (url) => {
  const startServer = async (app,PORT) => {
     try {
       await connectToMongoDB(process.env.URL_DB)
-      app.listen(PORT, () => {
+      server.listen(PORT, () => {
         console.log(`App is listening on port ${PORT}`)
       })
     } catch (error) {

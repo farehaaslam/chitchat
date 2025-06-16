@@ -6,7 +6,8 @@ import 'dotenv/config'
 import  startServer from "./db.js"
 import userRouter from "./routes/user.routes.js"
 import messageRouter from "./routes/message.routes.js"
-const app = express()
+import { app,server } from "./lib/socket.js"
+
 const PORT = process.env.PORT || 3000
 app.use(cors({
     origin:'http://localhost:5173',

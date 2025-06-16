@@ -1,7 +1,8 @@
 import React from 'react'
 import {userAuthStore} from '../store/useAuthStore.js'
 import { Link } from 'react-router-dom'
-import {Settings} from 'lucide-react'
+import {Settings,MessageCircleHeart} from 'lucide-react'
+
 
 const Navbar = () => {
   const {authUser,logout}=userAuthStore()
@@ -11,7 +12,12 @@ const Navbar = () => {
    <div>
     <div className="navbar  shadow-sm bg-primary">
   <div className="flex-1">
-    <a className="btn btn-ghost text-[25px]  font-extrabold">chitChat</a>
+    <div className='flex'>
+      <Link className="btn btn-ghost text-[25px]  font-extrabold" to='/'>chitChat</Link>
+    <MessageCircleHeart/>
+
+    </div>
+    
   </div>
   <div className="flex gap-2">
     {/* <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" /> */}
@@ -40,9 +46,15 @@ const Navbar = () => {
 </div>
    </div>
    :
-   <div className="navbar bg-base-100 shadow-sm">
-  <div className="flex-1">
-    <a className="btn btn-ghost text-[25px]  font-extrabold">chitChat</a>
+   <div className="navbar  shadow-sm  bg-primary">
+  <div className=" flex-1 flex-row">
+    <div className='flex  '>
+      <Link className="btn btn-ghost text-[25px]  font-extrabold " to="/signin" >
+        chitChat</Link>
+    <MessageCircleHeart  className='h-[25px] w-[25px]'/>
+
+    </div>
+    
   </div>
   <div className="flex-none">
     <Link to='/setting' className="btn btn-square btn-ghost" >
